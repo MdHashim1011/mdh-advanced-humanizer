@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """mdh_text.py - deterministic verification helper for MdH's Advanced Humanizer.
 
-Author: Mohamed Hashim. License: MIT. Version 0.5.2.
+Author: Mohamed Hashim. License: MIT. Version 0.5.3.
 
 Commands (each prints one JSON object to stdout):
   count        count words under a named convention, with optional exclusions/sections
@@ -33,7 +33,7 @@ from collections import Counter
 from decimal import Decimal, InvalidOperation
 from fractions import Fraction
 
-VERSION = "0.5.2"
+VERSION = "0.5.3"
 TOOL = "mdh_text"
 COMMANDS = ("count", "budget", "inventory", "compare", "originality")
 DEFAULT_MAX_BYTES = 5_000_000
@@ -970,7 +970,13 @@ def _tokens(s):
 def _dice(ca, cb, la, lb):
     if not la and not lb:
         return 1.0
-    return 2.0 * sum((ca & cb).values()) / (la + lb)
+    # Same integer as sum((ca & cb).values()), without building a Counter (alignment calls this about a million
+    # times on a 1 MB document); the key intersection runs in C and most token pairs do not match.
+    shared = 0
+    for tok in ca.keys() & cb.keys():
+        n, m = ca[tok], cb[tok]
+        shared += n if n < m else m
+    return 2.0 * shared / (la + lb)
 
 
 def align_sentences(orig, rev):
@@ -982,6 +988,7 @@ def align_sentences(orig, rev):
     rtok = [_tokens(s["text"]) for s in rev]
     ocnt = [Counter(t) for t in otok]
     rcnt = [Counter(t) for t in rtok]
+    pair_cnt = {}  # revised j -> Counter of sentences j and j+1, built once and shared by every window
     out = [None] * len(orig)
     sm = difflib.SequenceMatcher(None, [" ".join(t) for t in otok], [" ".join(t) for t in rtok], autojunk=False)
     for tag, i1, i2, j1, j2 in sm.get_opcodes():
@@ -996,12 +1003,15 @@ def align_sentences(orig, rev):
             expected = j1 + (i - i1) * (j2 - j1) / float(span_o)
             lo, hi = max(lo_j, int(expected) - 30), min(hi_j, int(expected) + 31)
             cands = []
+            singles = [_dice(ocnt[i], rcnt[j], len(otok[i]), len(rtok[j])) for j in range(lo, hi)]
             for j in range(lo, hi):
-                single = _dice(ocnt[i], rcnt[j], len(otok[i]), len(rtok[j]))
+                single = singles[j - lo]
                 cands.append(((j,), single))
                 if j + 1 < hi:
-                    nxt = _dice(ocnt[i], rcnt[j + 1], len(otok[i]), len(rtok[j + 1]))
-                    merged = _dice(ocnt[i], rcnt[j] + rcnt[j + 1], len(otok[i]), len(rtok[j]) + len(rtok[j + 1]))
+                    nxt = singles[j + 1 - lo]
+                    if j not in pair_cnt:
+                        pair_cnt[j] = rcnt[j] + rcnt[j + 1]
+                    merged = _dice(ocnt[i], pair_cnt[j], len(otok[i]), len(rtok[j]) + len(rtok[j + 1]))
                     if merged >= max(single, nxt) + 0.1:
                         cands.append(((j, j + 1), merged))
             cands.sort(key=lambda c: (-c[1], abs(c[0][0] - expected)))

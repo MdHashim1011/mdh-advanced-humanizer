@@ -1,4 +1,4 @@
-# MdH's Advanced Humanizer - portable instructions (v0.5.2)
+# MdH's Advanced Humanizer - portable instructions (v0.5.3)
 
 Single-file version for platforms without skill folders or code execution. Author: Mohamed Hashim. License: MIT.
 

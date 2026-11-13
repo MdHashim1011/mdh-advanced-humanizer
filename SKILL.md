@@ -5,7 +5,7 @@ license: MIT
 compatibility: Works with or without code execution. Python 3 (standard library only) is optional and enables exact word counts, meaning-change checks and paraphrase-originality checks.
 metadata:
   author: Mohamed Hashim
-  version: 0.5.2
+  version: 0.5.3
 ---
 
 # MdH's Advanced Humanizer

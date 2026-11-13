@@ -1,4 +1,4 @@
-"""Regression and interface tests for mdh_text.py 0.5.2 (standard library only).
+"""Regression and interface tests for mdh_text.py 0.5.3 (standard library only).
 
 Run:  py -I -m unittest discover -s "<skill>/scripts/tests"   (or python3 -I -m unittest ...)
 """
@@ -359,6 +359,90 @@ class CompareFlags(unittest.TestCase):
         self.assertIn("HEDGE_CHANGED", codes(status("It is unlikely to work.", "It is likely to work.")))
 
 
+class AlignmentScore(unittest.TestCase):
+    """The fast overlap score must equal the original Counter-intersection score exactly (speed work, 0.5.3)."""
+
+    def test_dice_matches_counter_intersection(self):
+        from collections import Counter
+        rng = random.Random(7)
+        vocab = ["the", "rate", "fell", "by", "12", "points", "not", "may", "a", "of", "and", "to"]
+        for _ in range(2000):
+            a = [rng.choice(vocab) for _ in range(rng.randint(0, 25))]
+            b = [rng.choice(vocab) for _ in range(rng.randint(0, 25))]
+            ca, cb = Counter(a), Counter(b)
+            expected = 1.0 if not a and not b else 2.0 * sum((ca & cb).values()) / (len(a) + len(b))
+            self.assertEqual(m._dice(ca, cb, len(a), len(b)), expected, (a, b))
+
+    @staticmethod
+    def _reference_align(orig, rev):
+        """align_sentences as it was before the 0.5.3 speed work, kept to pin identical output."""
+        import difflib
+        from collections import Counter
+        dice = lambda ca, cb, la, lb: 1.0 if not la and not lb else 2.0 * sum((ca & cb).values()) / (la + lb)
+        otok = [m._tokens(s["text"]) for s in orig]
+        rtok = [m._tokens(s["text"]) for s in rev]
+        ocnt, rcnt = [Counter(t) for t in otok], [Counter(t) for t in rtok]
+        out = [None] * len(orig)
+        sm = difflib.SequenceMatcher(None, [" ".join(t) for t in otok], [" ".join(t) for t in rtok], autojunk=False)
+        for tag, i1, i2, j1, j2 in sm.get_opcodes():
+            if tag == "equal":
+                for k in range(i2 - i1):
+                    out[i1 + k] = {"original": i1 + k, "revised": [j1 + k], "score": 1.0, "ambiguous": False,
+                                   "confident": True, "exact": True}
+                continue
+            lo_j, hi_j = max(0, j1 - 1), min(len(rev), j2 + 1)
+            span_o = max(1, i2 - i1)
+            for i in range(i1, i2):
+                expected = j1 + (i - i1) * (j2 - j1) / float(span_o)
+                lo, hi = max(lo_j, int(expected) - 30), min(hi_j, int(expected) + 31)
+                cands = []
+                for j in range(lo, hi):
+                    single = dice(ocnt[i], rcnt[j], len(otok[i]), len(rtok[j]))
+                    cands.append(((j,), single))
+                    if j + 1 < hi:
+                        nxt = dice(ocnt[i], rcnt[j + 1], len(otok[i]), len(rtok[j + 1]))
+                        merged = dice(ocnt[i], rcnt[j] + rcnt[j + 1], len(otok[i]), len(rtok[j]) + len(rtok[j + 1]))
+                        if merged >= max(single, nxt) + 0.1:
+                            cands.append(((j, j + 1), merged))
+                cands.sort(key=lambda c: (-c[1], abs(c[0][0] - expected)))
+                best = cands[0] if cands else ((), 0.0)
+                second = cands[1][1] if len(cands) > 1 else 0.0
+                sandwiched = i2 - i1 == 1 and j2 - j1 == 1 and best[0] == (j1,)
+                floor = 0.25 if sandwiched else 0.5
+                ambiguous = best[1] < floor or (not sandwiched and best[1] < 0.9 and second >= 0.5
+                                                and best[1] - second < 0.05 and not set(best[0]) & set(cands[1][0]))
+                out[i] = {"original": i, "revised": list(best[0]), "score": round(best[1], 3),
+                          "ambiguous": bool(ambiguous), "confident": best[1] >= floor, "exact": False}
+        return out
+
+    def test_alignment_matches_reference_on_edited_documents(self):
+        rng = random.Random(11)
+        words = ("the trial group did not improve may reduce cost fell by 12 to 30 only when six sessions "
+                 "most participants reported higher scores than controls in 2021 and 2022").split()
+        for _ in range(40):
+            sents = [" ".join(rng.choice(words) for _ in range(rng.randint(3, 18))).capitalize() + "."
+                     for _ in range(rng.randint(1, 90))]
+            rev = list(sents)
+            for _ in range(rng.randint(0, 12)):
+                k = rng.randrange(len(rev) + 1)
+                op = rng.choice(("insert", "delete", "split", "edit"))
+                if op == "insert":
+                    rev.insert(k, " ".join(rng.choice(words) for _ in range(8)).capitalize() + ".")
+                elif rev and op == "delete":
+                    rev.pop(min(k, len(rev) - 1))
+                elif rev and op == "split":
+                    w = rev[min(k, len(rev) - 1)].rstrip(".").split()
+                    h = max(1, len(w) // 2)
+                    rev[min(k, len(rev) - 1):min(k, len(rev) - 1) + 1] = [" ".join(w[:h]) + ".", " ".join(w[h:] or w) + "."]
+                elif rev:
+                    w = rev[min(k, len(rev) - 1)].split()
+                    w[rng.randrange(len(w))] = rng.choice(words)
+                    rev[min(k, len(rev) - 1)] = " ".join(w)
+            o = m.split_sentences(" ".join(sents))
+            r = m.split_sentences(" ".join(rev))
+            self.assertEqual(m.align_sentences(o, r), self._reference_align(o, r))
+
+
 class Approximators(unittest.TestCase):
     """An approximator dropped before a quantity turns an estimate into an exact claim (meaning audit, 0.5.2)."""
 
@@ -444,10 +528,10 @@ class Authorization(TempDirCase):
 
 class Cli(TempDirCase):
     def test_version_and_envelope(self):
-        self.assertEqual(m.VERSION, "0.5.2")
+        self.assertEqual(m.VERSION, "0.5.3")
         f = self.write("a.md", "One two three.")
         code, out = run_cli(["count", "--file", f])
-        self.assertEqual((code, out["command"], out["version"], out["count"]), (0, "count", "0.5.2", 3))
+        self.assertEqual((code, out["command"], out["version"], out["count"]), (0, "count", "0.5.3", 3))
 
     def test_file_is_required(self):
         code, out = run_cli(["budget", "--type", "max", "--target", "5"])
