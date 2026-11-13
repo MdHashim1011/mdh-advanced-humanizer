@@ -2,6 +2,15 @@
 
 All notable changes to this skill are recorded here. Versions follow semantic versioning. The detailed change list for the helper script is in `scripts/CHANGELOG-0.4.0.md`.
 
+## [0.5.4] - 2026-11-14
+
+### Skill instructions
+- After a proofread, the reply lists the changes, one line each, after the corrected text, unless the user asked for the text only. In a held-out blind test both graders preferred a proofread with a change list.
+- When expanding to a minimum, honest additions now include the open questions the supplied facts raise and next steps labelled as suggestions for the reader to decide, alongside what each fact means for the reader. Padding is replaced with these instead of only being deleted. Presenting a suggestion as a decision already made is still not allowed. This applies in `SKILL.md`, `PORTABLE.md` and the quality and length reference.
+- The paraphrasing reference says that keeping the source's clause order with new verbs is patchwriting that often reads awkwardly, and asks for a different leading idea and a reread for natural phrasing. It also says to keep the measured quantity (a later start is not a longer duration).
+- With code execution, the originality check now always runs on a paraphrase of someone else's text, and every flagged run is rewritten or quoted before delivery.
+- When restructuring makes a sentence clumsier, keeping the original sentence is allowed only in the user's own text, never in someone else's.
+
 ## [0.5.3] - 2026-11-14
 
 ### Helper script

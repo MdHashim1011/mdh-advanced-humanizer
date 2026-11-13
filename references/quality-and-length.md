@@ -41,11 +41,11 @@ For Chinese, Japanese and Korean text, count characters, as word processors do. 
    - Expanding for a named reader (committee, manager, client): use that reader's usual layout. A one- or two-sentence summary, short headed sections (status by workstream, risks and dependencies, next steps) and, for each fact, what it means for that reader (the risk, the dependency, what to watch) are structure, not padding. Never invent requests, dates, causes, commitments or praise.
    - Never cut protected content, required caveats, negations, conditions or citations.
    - Priority: correctness, then required information, then clear organisation, then length.
-4. **Honest shortfall:** within 10% of a minimum, make one more honest pass first (a consequence, a dependency, the purpose of a step). If reaching the minimum would still require repeating a fact, restating a point, or adding content the user did not supply, stop expanding.
+4. **Honest shortfall:** within 10% of a minimum, make one more honest pass first (a consequence, a dependency, the purpose of a step). If reaching the minimum would still require repeating a fact, restating a point, or adding content the user did not supply, stop expanding. Implications, open questions and labelled suggestions are not new content.
    - Deliver the faithful version.
    - Add one integrity sentence after it giving the count and two or three specific pieces of information that would allow the target to be reached.
    - If the shortfall is more than about a quarter of the minimum, also put a short marked placeholder inside the text where each missing detail belongs (`[review date]`). Placeholders are not counted as words.
-   - Signs you are padding: the same fact appears twice, a sentence only rephrases the previous one, a closing "in short" recap, or a sentence states the obvious ("the review has not yet taken place").
+   - Signs you are padding: the same fact appears twice, a sentence only rephrases the previous one, a closing "in short" recap, or a sentence states the obvious ("the review has not yet taken place"). Replace padding with what the reader needs: what a supplied fact means for them, an open question the facts raise, or a next step labelled as a suggestion for them to decide. These are honest additions; presenting a suggestion as a decision already made is not.
 5. Re-run the gate after revising. Style and length repairs stop after two rounds in total. If the text still fails, deliver the closest faithful version and say so in one integrity sentence.
 6. Fixing a meaning error, an invented fact or a misattribution is never limited by the round cap.
 7. If you changed the text after the last helper run, run it again before reporting a count.

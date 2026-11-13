@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """mdh_text.py - deterministic verification helper for MdH's Advanced Humanizer.
 
-Author: Mohamed Hashim. License: MIT. Version 0.5.3.
+Author: Mohamed Hashim. License: MIT. Version 0.5.4.
 
 Commands (each prints one JSON object to stdout):
   count        count words under a named convention, with optional exclusions/sections
@@ -33,7 +33,7 @@ from collections import Counter
 from decimal import Decimal, InvalidOperation
 from fractions import Fraction
 
-VERSION = "0.5.3"
+VERSION = "0.5.4"
 TOOL = "mdh_text"
 COMMANDS = ("count", "budget", "inventory", "compare", "originality")
 DEFAULT_MAX_BYTES = 5_000_000

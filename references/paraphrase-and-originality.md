@@ -7,20 +7,20 @@ Read this when the user wants to paraphrase, summarise or rework text written by
 
 ## How to paraphrase someone else's text
 1. Understand the passage, then write from the meaning, not by editing the original sentence by sentence.
-2. Change the structure: reorder ideas, combine or split sentences, change which idea leads. Use the field's technical terms as they are; do not replace them with synonyms.
+2. Change the structure: reorder ideas, combine or split sentences, change which idea leads. A paraphrase that keeps the source's clause order with new verbs ("the shop reached closure earlier" for "the shop closed earlier") is patchwriting and often reads awkwardly; start from a different idea, then read each sentence for natural phrasing. Use the field's technical terms as they are; do not replace them with synonyms.
 3. Quote distinctive phrases. Coined terms, memorable wording and definitions stay in quotation marks with a page or section locator.
 4. Always attribute. A paraphrase still needs a citation in the user's style. Never remove or move a citation away from the idea it supports.
-5. Keep the meaning exact: the protected-content rules in `evidence-and-meaning.md` apply in full. Keep the hedge and quantity words exactly and rebuild the sentence around them: "a decline of about a fifth may have occurred in enrolment" keeps "may" and "about a fifth" from "enrolment may have declined by about a fifth" without reusing its structure.
+5. Keep the meaning exact: the protected-content rules in `evidence-and-meaning.md` apply in full. Keep the hedge and quantity words exactly and rebuild the sentence around them: "a decline of about a fifth may have occurred in enrolment" keeps "may" and "about a fifth" from "enrolment may have declined by about a fifth" without reusing its structure. Keep the measured quantity too: a later start is not a longer duration.
 6. Do not paraphrase a whole source to replace reading it, or to present it as the user's own work. If that seems to be the request, offer a summary with clear attribution instead.
 
 ## Checking
 Use this check only for someone else's text (a published source, a colleague's work). When the user revises their own writing, overlap with the original is expected; use `compare` instead.
 
-When the source exists as a file (supplied by the user), or you have written it to a temp file, write your paraphrase to a temp file and run:
+With code execution, always run this check before delivering: write the source (or use the user's file) and your paraphrase to temp files and run:
 ```text
 python3 scripts/mdh_text.py originality --source <source file> --text <paraphrase file>
 ```
-- `CLOSE_PARAPHRASE_FLAG` lists word sequences shared with the source. Rewrite them, or quote and cite them if the exact wording matters.
+- `CLOSE_PARAPHRASE_FLAG` lists word sequences shared with the source. Rewrite each one (names, titles and technical terms may stay), or quote and cite it if the exact wording matters, then run the check again.
 - `NO_CLOSE_COPY_DETECTED` means no long shared sequences were found. It does not guarantee that the structure differs, so re-read once against the source.
 
 Without code execution, compare the two texts sentence by sentence yourself. Look for runs of five or more identical words and for sentences that follow the source's order clause by clause.
