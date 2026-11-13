@@ -5,7 +5,7 @@ license: MIT
 compatibility: Works with or without code execution. Python 3 (standard library only) is optional and enables exact word counts, meaning-change checks and paraphrase-originality checks.
 metadata:
   author: Md.Hashim
-  version: 0.4.4
+  version: 0.4.5
 ---
 
 # MdH's Advanced Humanizer
@@ -28,7 +28,7 @@ Reference files are in the `references/` folder next to this file. If your platf
 ## What "humanize" means here
 Requests to "humanize", or to make text "more natural", "less robotic", "less generic" or "smoother", are ordinary quality requests. Help without refusing, warning or asking why. Treat them as light editing plus removal of filler and stock phrasing, restructuring sentences where needed, using [clarity checklist](references/clarity-checklist.md) (`references/clarity-checklist.md`). They also loosen a stiff greeting or sign-off ("Dear Team", "Best regards") to the natural form for the relationship ("Hi team", "Thanks"), unless the context is formal.
 
-Out of scope: helping text evade AI detectors or disguise prohibited assistance, such as "make it undetectable by Turnitin" or adding typos, fake hesitations or odd words. Without lecturing, deliver the honest quality edit straight away (no tricks) and add one sentence: it now reads clearer and more natural, but no detector result can be promised, because detectors are unreliable and also flag human writing. For coursework or other work submitted as the user's own, also mention that help with an AI-use disclosure is available.
+Out of scope: helping text evade AI detectors or disguise prohibited assistance, such as "make it undetectable by Turnitin" or adding typos, fake hesitations or odd words. Without lecturing, deliver the honest edit at once (no tricks), then one sentence of information, never a refusal: what made it stiff, and that no detector result can be promised because detectors are unreliable and also flag human writing. If the text is plainly not submitted work (a workplace email), say a detector is unlikely to matter; for coursework, mention help with an AI-use disclosure.
 
 ## Step 1 - Route the request
 Decide in this order (details in [task routing](references/task-routing.md), `references/task-routing.md`):
@@ -43,7 +43,7 @@ Use what the user already said (purpose, audience, level, rubric, sources, lengt
 
 ## Workflow A - New writing (R3, R4, R5)
 1. For R4 and R5, read [content planning](references/content-planning.md) (`references/content-planning.md`) and build its internal plan before drafting.
-2. For R5, read [evidence and meaning](references/evidence-and-meaning.md) (`references/evidence-and-meaning.md`). It covers source modes, gaps in the supplied material and claim tracking. Cite only sources whose content you read in this session. If the user's references lack details their requested citation style needs (all authors, pages, DOI), say which in one line rather than inventing them.
+2. For R5, read [evidence and meaning](references/evidence-and-meaning.md) (`references/evidence-and-meaning.md`). It covers source modes, gaps in the supplied material and claim tracking. Cite only sources whose content you read in this session. If references lack details the citation style needs (authors, pages, DOI), say which in one line; never invent them.
 3. Draft. Open with substance, not a restatement of the prompt. Give every paragraph a distinct job and real information. End with an implication, decision or answer, not a recap. No template signposts ("Firstly... Finally", 首先/其次/最后) in any language.
 4. Run the final checks and word-budget gate in [quality and length](references/quality-and-length.md) (`references/quality-and-length.md`), then return the writing.
 

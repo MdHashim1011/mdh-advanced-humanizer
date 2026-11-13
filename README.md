@@ -2,7 +2,7 @@
 
 A writing skill for agents that write, revise and edit prose. It helps produce text a careful human expert would sign: specific, accurate, at the right level and within the word limit, with facts, numbers, citations, negations and the writer's voice kept intact.
 
-Version 0.4.4. Author: Md.Hashim. License: MIT.
+Version 0.4.5. Author: Md.Hashim. License: MIT.
 
 ## What it does
 

@@ -2,6 +2,12 @@
 
 All notable changes to this skill are recorded here. Versions follow semantic versioning. The detailed change list for the helper script is in `scripts/CHANGELOG-0.4.0.md`.
 
+## [0.4.5] - 2026-11-13
+
+### Skill instructions
+- **Detector-framed requests:** once the honest edit is delivered, the follow-up sentence is information, never a refusal. It names what made the text stiff and why no detector result can be promised, and says when a detector is unlikely to matter (a workplace email). Coursework still gets the AI-use disclosure offer.
+- Small wording cuts to keep `SKILL.md` and `PORTABLE.md` within their size limits.
+
 ## [0.4.4] - 2026-11-13
 
 ### Skill instructions

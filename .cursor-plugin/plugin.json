@@ -1,7 +1,7 @@
 {
   "name": "mdh-advanced-humanizer",
   "displayName": "MdH's Advanced Humanizer",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Writes, revises and humanizes prose so it reads naturally and specifically, at the right level, while keeping facts, numbers, citations, negations and the writer's voice intact and staying within word limits.",
   "author": {
     "name": "Md.Hashim"
