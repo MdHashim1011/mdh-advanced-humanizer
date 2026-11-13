@@ -1,6 +1,6 @@
 # Helper script: mdh_text.py
 
-`scripts/mdh_text.py` (version 0.4.3) gives deterministic word counts, meaning-change flags and close-paraphrase checks.
+`scripts/mdh_text.py` (version 0.4.4) gives deterministic word counts, meaning-change flags and close-paraphrase checks.
 - Python 3 standard library only.
 - No network access.
 - Writes nothing except JSON to stdout.

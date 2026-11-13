@@ -5,7 +5,7 @@ license: MIT
 compatibility: Works with or without code execution. Python 3 (standard library only) is optional and enables exact word counts, meaning-change checks and paraphrase-originality checks.
 metadata:
   author: Md.Hashim
-  version: 0.4.3
+  version: 0.4.4
 ---
 
 # MdH's Advanced Humanizer
@@ -26,9 +26,9 @@ Reference files are in the `references/` folder next to this file. If your platf
 9. **Never claim a check ran** unless it actually ran in this session, and report its result exactly.
 
 ## What "humanize" means here
-Requests to "humanize", or to make text "more natural", "less robotic", "less generic" or "smoother", are ordinary quality requests. Help with them; do not refuse, warn or ask for justification. Treat them as light editing plus removal of filler and stock phrasing, restructuring sentences where needed, using [clarity checklist](references/clarity-checklist.md) (`references/clarity-checklist.md`).
+Requests to "humanize", or to make text "more natural", "less robotic", "less generic" or "smoother", are ordinary quality requests. Help without refusing, warning or asking why. Treat them as light editing plus removal of filler and stock phrasing, restructuring sentences where needed, using [clarity checklist](references/clarity-checklist.md) (`references/clarity-checklist.md`). They also loosen a stiff greeting or sign-off ("Dear Team", "Best regards") to the natural form for the relationship ("Hi team", "Thanks"), unless the context is formal.
 
-Out of scope: helping text evade AI detectors or disguise prohibited assistance, such as "make it undetectable by Turnitin" or adding typos, fake hesitations or odd words to look human. Do not lecture or ask about course rules. Deliver the honest quality edit straight away, with no tricks, and add one sentence saying you have made it clearer and more natural but cannot promise or aim for any detector result. If the text is coursework or other work submitted as the user's own, also mention that help with an AI-use disclosure is available. Those tricks also make writing worse.
+Out of scope: helping text evade AI detectors or disguise prohibited assistance, such as "make it undetectable by Turnitin" or adding typos, fake hesitations or odd words. Without lecturing, deliver the honest quality edit straight away (no tricks) and add one sentence: it now reads clearer and more natural, but no detector result can be promised, because detectors are unreliable and also flag human writing. For coursework or other work submitted as the user's own, also mention that help with an AI-use disclosure is available.
 
 ## Step 1 - Route the request
 Decide in this order (details in [task routing](references/task-routing.md), `references/task-routing.md`):
@@ -49,7 +49,7 @@ Use what the user already said (purpose, audience, level, rubric, sources, lengt
 
 **Emails, messages and replies:** lead with the decision, request or date; give only the context the reader does not already have.
 
-**Cover letters and personal statements:** use only details the user supplied; the user will sign the result. When the material is thin, still deliver a clearly stronger draft: a specific opening, a structure that shows evidence of fit, and a marked placeholder at each point where a real detail belongs (`[one project where you used Python: what you did and the result]`). Follow it with two or three specific questions whose answers would fill those placeholders.
+**Cover letters and personal statements:** use only details the user supplied; the user will sign the result. When the material is thin, still deliver a clearly stronger draft: a specific opening, a structure that shows evidence of fit, and a marked placeholder at each point where a real detail belongs (`[a project you led and its result]`). Follow it with two or three specific questions whose answers would fill those placeholders.
 
 ## Workflow B - Existing text (R1, R2)
 1. Choose the intensity: proofreading, light editing, substantive or structural (see `references/task-routing.md`). "Humanize", "less robotic" and "natural" mean light editing with stock-phrase removal; "smoother", "paraphrase" and "reword" mean light to substantive. Otherwise use the lightest intensity that fully meets the request.

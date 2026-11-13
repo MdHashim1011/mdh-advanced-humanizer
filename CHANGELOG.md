@@ -2,6 +2,13 @@
 
 All notable changes to this skill are recorded here. Versions follow semantic versioning. The detailed change list for the helper script is in `scripts/CHANGELOG-0.4.0.md`.
 
+## [0.4.4] - 2026-11-13
+
+### Skill instructions
+- **Detector-framed requests** now say briefly why no detector result can be promised: detectors are unreliable and also flag human writing.
+- **Humanize and "less robotic" requests loosen stiff greetings and sign-offs** ("Dear Team" to "Hi team", "Best regards" to "Thanks") unless the context is formal. The rule was in the clarity checklist only; it is now in the main rules and `PORTABLE.md`.
+- The paraphrase example no longer reuses a test passage.
+
 ## [0.4.3] - 2026-11-13
 
 Fixes for the two losses both blind graders agreed on in a comparison against the plain model (8 tasks, 2 graders), plus one paraphrase refinement.
