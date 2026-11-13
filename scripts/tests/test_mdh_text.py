@@ -19,7 +19,7 @@ _spec = importlib.util.spec_from_file_location("mdh_text", SCRIPT)
 m = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(m)
 
-PERF_LIMIT = float(os.environ.get("MDH_PERF_LIMIT", "8"))  # CPU seconds; target is < 5 on a desktop
+PERF_LIMIT = float(os.environ.get("MDH_PERF_LIMIT", "8"))  # CPU seconds, generous for slow CI machines; project target is under 10 s for 1 MB
 
 
 def run_cli(args, stdin_bytes=None):
