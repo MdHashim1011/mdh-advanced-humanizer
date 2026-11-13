@@ -2,6 +2,16 @@
 
 All notable changes to this skill are recorded here. Versions follow semantic versioning. The detailed change list for the helper script is in `scripts/CHANGELOG-0.4.0.md`.
 
+## [0.4.3] - 2026-11-13
+
+Fixes for the two losses both blind graders agreed on in a comparison against the plain model (8 tasks, 2 graders), plus one paraphrase refinement.
+
+### Skill instructions
+- **Detector-framed requests get the honest edit straight away.** The evasion goal is still not pursued, but the user now receives a clearer, more natural version at once, with one sentence saying no detector result can be promised. Coursework gets a mention that help with an AI-use disclosure is available.
+- **Expanding for a named reader** (committee, manager, client) may use that reader's usual layout: a short summary, headed sections and what each fact means for the reader. Invented requests, dates, causes and commitments are still not allowed.
+- **Paraphrasing someone else's text** keeps each hedge's meaning without reusing the source's surrounding words.
+- SKILL.md shortened elsewhere (helper details now point to `references/helper.md`) to stay within the size limit.
+
 ## [0.4.2] - 2026-11-13
 
 ### Helper script

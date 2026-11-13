@@ -38,6 +38,7 @@ For Chinese, Japanese and Korean text, count characters, as word processors do. 
 3. If it fails, revise using the gap:
    - Cut in this order: announcements and recaps, duplicated explanation, wordy phrasing, secondary examples.
    - Add in this order: deeper explanation of the weakest supplied point, an example from the user's material, a stated limitation.
+   - Expanding for a named reader (committee, manager, client): use that reader's usual layout. A one- or two-sentence summary, short headed sections (status by workstream, risks and dependencies, next steps) and, for each fact, what it means for that reader (the risk, the dependency, what to watch) are structure, not padding. Never invent requests, dates, causes, commitments or praise.
    - Never cut protected content, required caveats, negations, conditions or citations.
    - Priority: correctness, then required information, then clear organisation, then length.
 4. **Honest shortfall:** if reaching a minimum would require repeating a fact, restating a point, or adding content the user did not supply, stop expanding.

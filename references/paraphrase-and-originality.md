@@ -10,7 +10,7 @@ Read this when the user wants to paraphrase, summarise or rework text written by
 2. Change the structure: reorder ideas, combine or split sentences, change which idea leads. Use the field's technical terms as they are; do not replace them with synonyms.
 3. Quote distinctive phrases. Coined terms, memorable wording and definitions stay in quotation marks with a page or section locator.
 4. Always attribute. A paraphrase still needs a citation in the user's style. Never remove or move a citation away from the idea it supports.
-5. Keep the meaning exact: the protected-content rules in `evidence-and-meaning.md` apply in full.
+5. Keep the meaning exact: the protected-content rules in `evidence-and-meaning.md` apply in full. Protect a hedge's meaning, not the source's words around it: "carbon that possibly built up over several thousand years" keeps the hedge and the quantity of "carbon that may have accumulated over several thousand years" without reusing its phrasing.
 6. Do not paraphrase a whole source to replace reading it, or to present it as the user's own work. If that seems to be the request, offer a summary with clear attribution instead.
 
 ## Checking
