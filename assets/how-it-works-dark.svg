@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="960" height="340" role="img" aria-labelledby="t d">
+<title id="t">How it works</title>
+<desc id="d">Four steps. 1 Route: the request is classed as proofreading, revision or humanizing, short or long new writing, or source-based writing. 2 Edit: filler and stock phrasing are cut and sentences restructured while the writer&#x27;s voice is kept; nothing is padded or invented. 3 Check: every negation, hedge, number, citation, condition and causal claim is compared with the original, and the length is checked, for example 238 of 250 words; an optional script gives exact counts, meaning flags and a copied-phrase check. 4 Deliver: only the writing, plus one plain sentence when something needs the user&#x27;s attention.</desc>
+<style>svg{--bg:#181816;--surface:#21211f;--tile:#2a2a27;--line:#353532;--line-strong:#4a4a46;--ink:#f0efea;--ink2:#c9c8bf;--ink3:#a3a299;--accent:#6ea3f2;--accent-bg:#1d2d45;--track:#34342f;--ok:#6fcf8b;--ok-bg:#16301f;--warn:#e9bf5c;--warn-bg:#382c0e;--bad:#f28b8b;--bad-bg:#3b1c1c}</style>
+<rect x="0.5" y="0.5" width="959" height="339" rx="20" fill="var(--bg)" stroke="var(--line)"/>
+<rect x="24" y="24" width="176" height="292" rx="16" fill="var(--surface)" stroke="var(--line)"/>
+<text x="44" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="650" fill="var(--accent)" text-anchor="start">1</text><text x="60" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="650" fill="var(--ink)" text-anchor="start">Route</text>
+<path d="M207,164 L213,170 L207,176" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="68" width="144" height="30" rx="9" fill="var(--tile)" stroke="none"/>
+<text x="52" y="88" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink2)" text-anchor="start">Proofread</text>
+<rect x="40" y="106" width="144" height="30" rx="9" fill="var(--accent-bg)" stroke="none"/>
+<text x="52" y="126" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="var(--accent)" text-anchor="start">Revise or humanize</text>
+<rect x="40" y="144" width="144" height="30" rx="9" fill="var(--tile)" stroke="none"/>
+<text x="52" y="164" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink2)" text-anchor="start">Short new writing</text>
+<rect x="40" y="182" width="144" height="30" rx="9" fill="var(--tile)" stroke="none"/>
+<text x="52" y="202" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink2)" text-anchor="start">Long new writing</text>
+<rect x="40" y="220" width="144" height="30" rx="9" fill="var(--tile)" stroke="none"/>
+<text x="52" y="240" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink2)" text-anchor="start">Source-based writing</text>
+<rect x="220" y="24" width="212" height="292" rx="16" fill="var(--surface)" stroke="var(--line)"/>
+<text x="240" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="650" fill="var(--accent)" text-anchor="start">2</text><text x="256" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="650" fill="var(--ink)" text-anchor="start">Edit</text>
+<path d="M439,164 L445,170 L439,176" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="246" cy="80" r="2.5" fill="var(--ink3)"/>
+<text x="256" y="84" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink2)" text-anchor="start">Cut filler and stock phrasing</text>
+<circle cx="246" cy="106" r="2.5" fill="var(--ink3)"/>
+<text x="256" y="110" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink2)" text-anchor="start">Restructure, keep the voice</text>
+<circle cx="246" cy="132" r="2.5" fill="var(--ink3)"/>
+<text x="256" y="136" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink2)" text-anchor="start">Match the reader and level</text>
+<circle cx="246" cy="158" r="2.5" fill="var(--ink3)"/>
+<text x="256" y="162" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink2)" text-anchor="start">Never pad, never invent</text>
+<rect x="452" y="24" width="250" height="292" rx="16" fill="var(--surface)" stroke="var(--line)"/>
+<text x="472" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="650" fill="var(--accent)" text-anchor="start">3</text><text x="488" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="650" fill="var(--ink)" text-anchor="start">Check</text>
+<path d="M709,164 L715,170 L709,176" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="722" y="24" width="214" height="292" rx="16" fill="var(--surface)" stroke="var(--line)"/>
+<text x="742" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="650" fill="var(--accent)" text-anchor="start">4</text><text x="758" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="650" fill="var(--ink)" text-anchor="start">Deliver</text>
+<circle cx="748" cy="80" r="2.5" fill="var(--ink3)"/>
+<text x="758" y="84" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink2)" text-anchor="start">Only the writing</text>
+<circle cx="748" cy="106" r="2.5" fill="var(--ink3)"/>
+<text x="758" y="110" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink2)" text-anchor="start">One plain sentence when</text>
+<circle cx="748" cy="132" r="2.5" fill="var(--ink3)"/>
+<text x="758" y="136" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink2)" text-anchor="start">something needs your eyes</text>
+<circle cx="748" cy="158" r="2.5" fill="var(--ink3)"/>
+<text x="758" y="162" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink2)" text-anchor="start">No status codes</text>
+<text x="472" y="84" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600" fill="var(--ink3)" text-anchor="start">Meaning, claim by claim</text>
+<rect x="472" y="96" width="72" height="22" rx="11" fill="var(--ok-bg)" stroke="none"/><text x="482" y="111" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="11.5" font-weight="600" fill="var(--ok)" text-anchor="start">negations</text>
+<rect x="550" y="96" width="54" height="22" rx="11" fill="var(--ok-bg)" stroke="none"/><text x="560" y="111" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="11.5" font-weight="600" fill="var(--ok)" text-anchor="start">hedges</text>
+<rect x="472" y="124" width="60" height="22" rx="11" fill="var(--ok-bg)" stroke="none"/><text x="482" y="139" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="11.5" font-weight="600" fill="var(--ok)" text-anchor="start">numbers</text>
+<rect x="538" y="124" width="72" height="22" rx="11" fill="var(--ok-bg)" stroke="none"/><text x="548" y="139" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="11.5" font-weight="600" fill="var(--ok)" text-anchor="start">citations</text>
+<rect x="472" y="152" width="78" height="22" rx="11" fill="var(--ok-bg)" stroke="none"/><text x="482" y="167" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="11.5" font-weight="600" fill="var(--ok)" text-anchor="start">conditions</text>
+<rect x="556" y="152" width="97" height="22" rx="11" fill="var(--ok-bg)" stroke="none"/><text x="566" y="167" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="11.5" font-weight="600" fill="var(--ok)" text-anchor="start">cause vs link</text>
+<text x="472" y="196" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600" fill="var(--ink3)" text-anchor="start">Length</text>
+<rect x="472" y="206" width="210" height="8" rx="4" fill="var(--track)" stroke="none"/>
+<rect x="472" y="206" width="200" height="8" rx="4" fill="var(--accent)" stroke="none"/>
+<text x="472" y="232" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="var(--ink)" text-anchor="start">238 / 250 words</text>
+<text x="472" y="260" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600" fill="var(--ink3)" text-anchor="start">Optional helper script</text>
+<text x="472" y="280" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="450" fill="var(--ink2)" text-anchor="start">exact counts · meaning flags</text>
+<text x="472" y="298" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="450" fill="var(--ink2)" text-anchor="start">copied-phrase check</text>
+</svg>

@@ -41,7 +41,7 @@ For Chinese, Japanese and Korean text, count characters, as word processors do. 
    - Expanding for a named reader (committee, manager, client): use that reader's usual layout. A one- or two-sentence summary, short headed sections (status by workstream, risks and dependencies, next steps) and, for each fact, what it means for that reader (the risk, the dependency, what to watch) are structure, not padding. Never invent requests, dates, causes, commitments or praise.
    - Never cut protected content, required caveats, negations, conditions or citations.
    - Priority: correctness, then required information, then clear organisation, then length.
-4. **Honest shortfall:** if reaching a minimum would require repeating a fact, restating a point, or adding content the user did not supply, stop expanding.
+4. **Honest shortfall:** within 10% of a minimum, make one more honest pass first (a consequence, a dependency, the purpose of a step). If reaching the minimum would still require repeating a fact, restating a point, or adding content the user did not supply, stop expanding.
    - Deliver the faithful version.
    - Add one integrity sentence after it giving the count and two or three specific pieces of information that would allow the target to be reached.
    - If the shortfall is more than about a quarter of the minimum, also put a short marked placeholder inside the text where each missing detail belongs (`[review date]`). Placeholders are not counted as words.

@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+
+      - name: Validate and test
+        run: |
+          python -I tools/validate_package.py .
+          python -I -B -m unittest discover -s scripts/tests
+
+      - name: Check tag matches version
+        run: |
+          version=$(python -I -B scripts/mdh_text.py --version | awk '{print $2}')
+          test "v$version" = "$GITHUB_REF_NAME" || { echo "tag $GITHUB_REF_NAME does not match version $version"; exit 1; }
+
+      - name: Build release zip
+        run: python -I -B tools/build_release.py .
+
+      - name: Extract release notes from CHANGELOG
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          awk -v h="## [$version]" 'index($0, h) == 1 {on=1; next} index($0, "## [") == 1 {on=0} on' CHANGELOG.md > notes.md
+          test -s notes.md
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/mdh-advanced-humanizer.zip PORTABLE.md \
+            --repo "$GITHUB_REPOSITORY" --title "MdH's Advanced Humanizer ${GITHUB_REF_NAME#v}" --notes-file notes.md

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 476" width="960" height="476" role="img" aria-labelledby="t d">
+<title id="t">Blind test results</title>
+<desc id="d">Bar chart of blind grading scores out of 40, averaged over two graders, with the skill against the same model without it. Chinese essay 35.5 vs 23.5; less robotic email 39.5 vs 32.5; paraphrase a published source 36 vs 30; proofread with a hidden instruction 37 vs 34.5; paraphrase dense statistics 36 vs 34.5; shorten to under 60 words 33 vs 31; make it undetectable request 34 vs 35; expand to at least 300 words 26 vs 29. Totals 277 vs 252 and 277 vs 248.</desc>
+<style>svg{--bg:#f6f6f3;--surface:#ffffff;--tile:#efeee9;--line:#e3e2dc;--line-strong:#d0cfc8;--ink:#141413;--ink2:#4d4c48;--ink3:#66655f;--accent:#2563c9;--accent-bg:#e6eefb;--track:#e7e6e0;--ok:#1b6f35;--ok-bg:#e3f2e7;--warn:#8a5a00;--warn-bg:#fbf0d4;--bad:#b42323;--bad-bg:#fbe7e7}</style>
+<rect x="0.5" y="0.5" width="959" height="475" rx="20" fill="var(--bg)" stroke="var(--line)"/>
+<text x="32" y="46" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="650" fill="var(--ink)" text-anchor="start">Blind comparison with the same model and no skill</text>
+<text x="32" y="68" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="450" fill="var(--ink3)" text-anchor="start">Two independent graders, 8 tasks, score out of 40 (average of both graders)</text>
+<rect x="662" y="34" width="12" height="12" rx="3" fill="var(--accent)" stroke="none"/>
+<text x="680" y="45" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600" fill="var(--ink2)" text-anchor="start">With the skill</text>
+<rect x="792" y="34" width="12" height="12" rx="3" fill="var(--line-strong)" stroke="none"/>
+<text x="810" y="45" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600" fill="var(--ink2)" text-anchor="start">Plain model</text>
+<text x="32" y="110" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="500" fill="var(--ink)" text-anchor="start">Chinese essay, 300-character limit</text>
+<rect x="330" y="94" width="461.5" height="12" rx="4" fill="var(--accent)" stroke="none"/>
+<rect x="330" y="109" width="305.5" height="12" rx="4" fill="var(--line-strong)" stroke="none"/>
+<text x="866" y="105" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--accent)" text-anchor="start">35.5</text>
+<text x="866" y="120" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--ink2)" text-anchor="start">23.5</text>
+<text x="32" y="150" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="500" fill="var(--ink)" text-anchor="start">Make an email less robotic</text>
+<rect x="330" y="134" width="513.5" height="12" rx="4" fill="var(--accent)" stroke="none"/>
+<rect x="330" y="149" width="422.5" height="12" rx="4" fill="var(--line-strong)" stroke="none"/>
+<text x="866" y="145" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--accent)" text-anchor="start">39.5</text>
+<text x="866" y="160" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--ink2)" text-anchor="start">32.5</text>
+<text x="32" y="190" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="500" fill="var(--ink)" text-anchor="start">Paraphrase a published source</text>
+<rect x="330" y="174" width="468.0" height="12" rx="4" fill="var(--accent)" stroke="none"/>
+<rect x="330" y="189" width="390.0" height="12" rx="4" fill="var(--line-strong)" stroke="none"/>
+<text x="866" y="185" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--accent)" text-anchor="start">36</text>
+<text x="866" y="200" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--ink2)" text-anchor="start">30</text>
+<text x="32" y="230" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="500" fill="var(--ink)" text-anchor="start">Proofread a text with a hidden instruction</text>
+<rect x="330" y="214" width="481.0" height="12" rx="4" fill="var(--accent)" stroke="none"/>
+<rect x="330" y="229" width="448.5" height="12" rx="4" fill="var(--line-strong)" stroke="none"/>
+<text x="866" y="225" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--accent)" text-anchor="start">37</text>
+<text x="866" y="240" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--ink2)" text-anchor="start">34.5</text>
+<text x="32" y="270" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="500" fill="var(--ink)" text-anchor="start">Paraphrase dense statistics</text>
+<rect x="330" y="254" width="468.0" height="12" rx="4" fill="var(--accent)" stroke="none"/>
+<rect x="330" y="269" width="448.5" height="12" rx="4" fill="var(--line-strong)" stroke="none"/>
+<text x="866" y="265" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--accent)" text-anchor="start">36</text>
+<text x="866" y="280" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--ink2)" text-anchor="start">34.5</text>
+<text x="32" y="310" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="500" fill="var(--ink)" text-anchor="start">Shorten to under 60 words</text>
+<rect x="330" y="294" width="429.0" height="12" rx="4" fill="var(--accent)" stroke="none"/>
+<rect x="330" y="309" width="403.0" height="12" rx="4" fill="var(--line-strong)" stroke="none"/>
+<text x="866" y="305" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--accent)" text-anchor="start">33</text>
+<text x="866" y="320" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--ink2)" text-anchor="start">31</text>
+<text x="32" y="350" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="500" fill="var(--ink)" text-anchor="start">“Make it undetectable” request</text>
+<rect x="330" y="334" width="442.0" height="12" rx="4" fill="var(--accent)" stroke="none"/>
+<rect x="330" y="349" width="455.0" height="12" rx="4" fill="var(--line-strong)" stroke="none"/>
+<text x="866" y="345" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--ink2)" text-anchor="start">34</text>
+<text x="866" y="360" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--ink)" text-anchor="start">35</text>
+<text x="32" y="390" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="500" fill="var(--ink)" text-anchor="start">Expand to at least 300 words</text>
+<rect x="330" y="374" width="338.0" height="12" rx="4" fill="var(--accent)" stroke="none"/>
+<rect x="330" y="389" width="377.0" height="12" rx="4" fill="var(--line-strong)" stroke="none"/>
+<text x="866" y="385" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--ink2)" text-anchor="start">26</text>
+<text x="866" y="400" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="650" fill="var(--ink)" text-anchor="start">29</text>
+<text x="32" y="438" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="var(--ink2)" text-anchor="start">Totals: 277 vs 252 (grader 1) and 277 vs 248 (grader 2). Skill wins 6 and 5 tasks, plain model 2 and 2.</text>
+</svg>

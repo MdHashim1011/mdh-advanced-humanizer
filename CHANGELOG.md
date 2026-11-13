@@ -2,6 +2,21 @@
 
 All notable changes to this skill are recorded here. Versions follow semantic versioning. The detailed change list for the helper script is in `scripts/CHANGELOG-0.4.0.md`.
 
+## [0.5.0] - 2026-11-13
+
+First public-ready release.
+
+### Skill instructions
+- **Near misses on a minimum length** now get one more honest expansion pass before a shortfall is reported. In a blind run the previous version stopped 7 words short of a 300-word minimum.
+- **Detector-framed requests:** the note after the edit never opens with "I can't"; it says what made the text stiff and why no detector result can be promised.
+
+### Repository
+- New README with diagrams, quick start, blind test results, limitations and roadmap.
+- Light and dark diagrams in `assets/`.
+- `SECURITY.md` and a CodeQL workflow (runs once the repository is public).
+- CI actions updated to current pinned versions (`actions/checkout` v7.0.1, `actions/setup-python` v7.1.0).
+- Release builds a ready-to-upload `mdh-advanced-humanizer.zip`.
+
 ## [0.4.5] - 2026-11-13
 
 ### Skill instructions
