@@ -52,4 +52,4 @@ body:
     id: platform
     attributes:
       label: Platform and skill version
-      description: For example "Claude Code, 0.5.1" or "custom GPT using PORTABLE.md".
+      description: For example "Claude Code, 0.5.2" or "custom GPT using PORTABLE.md".

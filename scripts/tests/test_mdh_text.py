@@ -1,4 +1,4 @@
-"""Regression and interface tests for mdh_text.py 0.5.1 (standard library only).
+"""Regression and interface tests for mdh_text.py 0.5.2 (standard library only).
 
 Run:  py -I -m unittest discover -s "<skill>/scripts/tests"   (or python3 -I -m unittest ...)
 """
@@ -359,6 +359,48 @@ class CompareFlags(unittest.TestCase):
         self.assertIn("HEDGE_CHANGED", codes(status("It is unlikely to work.", "It is likely to work.")))
 
 
+class Approximators(unittest.TestCase):
+    """An approximator dropped before a quantity turns an estimate into an exact claim (meaning audit, 0.5.2)."""
+
+    def test_dropped_approximator_before_quantity_is_flagged(self):
+        for o, r in [("Enrolment may have declined by about a fifth.", "Enrolment may have declined by a fifth."),
+                     ("About 40% of users replied.", "40% of users replied."),
+                     ("Nearly half of the sites failed.", "Half of the sites failed."),
+                     ("Around 300 people attended.", "300 people attended."),
+                     ("Almost twelve hours passed.", "Twelve hours passed."),
+                     ("About $5 million was spent.", "$5 million was spent."),
+                     ("It costs about €40.", "It costs €40."),
+                     ("Nearly all patients improved.", "All patients improved."),
+                     ("Almost no participants dropped out.", "No participants dropped out."),
+                     ("Almost everyone agreed.", "Everyone agreed."),
+                     ("About an eighth of the budget remains.", "An eighth of the budget remains."),
+                     ("About hundreds of people came.", "Hundreds of people came.")]:
+            self.assertIn("HEDGE_REMOVED", codes(status(o, r)), r)
+
+    def test_swapped_approximators_are_not_flagged(self):
+        for o, r in [("Almost everyone agreed.", "Nearly everyone agreed."),
+                     ("About 40% replied.", "Around 40% replied."),
+                     ("Roughly a fifth left.", "About a fifth left.")]:
+            self.assertNotIn("HEDGE_REMOVED", codes(status(o, r)), r)
+
+    def test_about_as_a_preposition_is_not_a_hedge(self):
+        for o, r in [("We talked about the results.", "We discussed the results."),
+                     ("The report is about a new method.", "The report describes a new method."),
+                     ("Around the campus, 300 trees were planted.", "300 trees were planted around the campus."),
+                     ("They asked about tenants' rights.", "They asked on behalf of tenants."),
+                     ("Prices rose around the world.", "Prices rose worldwide.")]:
+            self.assertNotIn("HEDGE_REMOVED", codes(status(o, r)), r)
+
+    def test_about_before_a_number_used_as_a_topic_is_a_known_false_alarm(self):
+        """Known limitation: "about two cities" reads as an estimate, so rewording it is flagged (fails safe)."""
+        self.assertIn("HEDGE_REMOVED", codes(status("The study is about two cities.", "The study compares two cities.")))
+
+    def test_kept_approximator_is_not_flagged(self):
+        res = status("Enrolment may have declined by about a fifth.",
+                     "A decline of about a fifth may have occurred in enrolment.")
+        self.assertNotIn("HEDGE_REMOVED", codes(res))
+
+
 class Authorization(TempDirCase):
     def test_pair_authorizes_literal_change(self):
         res = status("Patients received 5 mg daily.", "Patients received 5 g daily.", [("5 mg", "5 g")])
@@ -402,10 +444,10 @@ class Authorization(TempDirCase):
 
 class Cli(TempDirCase):
     def test_version_and_envelope(self):
-        self.assertEqual(m.VERSION, "0.5.1")
+        self.assertEqual(m.VERSION, "0.5.2")
         f = self.write("a.md", "One two three.")
         code, out = run_cli(["count", "--file", f])
-        self.assertEqual((code, out["command"], out["version"], out["count"]), (0, "count", "0.5.1", 3))
+        self.assertEqual((code, out["command"], out["version"], out["count"]), (0, "count", "0.5.2", 3))
 
     def test_file_is_required(self):
         code, out = run_cli(["budget", "--type", "max", "--target", "5"])

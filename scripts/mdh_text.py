@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """mdh_text.py - deterministic verification helper for MdH's Advanced Humanizer.
 
-Author: Mohamed Hashim. License: MIT. Version 0.5.1.
+Author: Mohamed Hashim. License: MIT. Version 0.5.2.
 
 Commands (each prints one JSON object to stdout):
   count        count words under a named convention, with optional exclusions/sections
@@ -33,7 +33,7 @@ from collections import Counter
 from decimal import Decimal, InvalidOperation
 from fractions import Fraction
 
-VERSION = "0.5.1"
+VERSION = "0.5.2"
 TOOL = "mdh_text"
 COMMANDS = ("count", "budget", "inventory", "compare", "originality")
 DEFAULT_MAX_BYTES = 5_000_000
@@ -831,7 +831,12 @@ _CUES = {
     "hedge": [_cue(r"\b(?:may|might|could|possibly|perhaps|probably|likely|unlikely|potentially|plausibly|"
                    r"tentative(?:ly)?|preliminary|roughly|approximately|seem(?:s|ed)?|appear(?:s|ed)?|"
                    r"suggest(?:s|ed|ing)?|indicat(?:e|es|ed|ing)|tend(?:s|ed)? to|is consistent with|"
-                   r"to some extent)\b", "hedge")],
+                   r"to some extent)\b", "hedge"),
+              # "about", "around", "nearly" and "almost" hedge only a quantity ("about a fifth"), not a topic.
+              _cue(r"\b(?:about|around|nearly|almost)(?=\s+(?:[$€£¥]?\d|an?\s+(?:half|third|quarter|fifth|"
+                   r"eighth|tenth|dozen|hundred|thousand|million|billion)\b|half\b|"
+                   r"(?:all|every(?:one|body|thing)?|no(?:one|body)?|none|always|never)\b|(?:%s)s?\b))" % _NUMWORD,
+                   "hedge")],
     "certainty": [_cue(r"\b(?:clearly|prov(?:e|es|ed|en)|demonstrat(?:e|es|ed)|establish(?:es|ed)?|"
                        r"confirm(?:s|ed)?|definitely|certainly|undoubtedly|conclusively|show(?:s|ed|n)?)\b",
                        "certainty")],
@@ -857,7 +862,7 @@ _HEDGE_CLASS = [
     (re.compile(r"^unlikely$"), "unlikely"),
     (re.compile(r"^(?:seem|appear)"), "appears"),
     (re.compile(r"^(?:suggest|indicat|is consistent with)"), "suggests"),
-    (re.compile(r"^(?:roughly|approximately)$"), "approx"),
+    (re.compile(r"^(?:roughly|approximately|about|around|nearly|almost)$"), "approx"),
     (re.compile(r"^(?:tentative|preliminary)"), "tentative"),
     (re.compile(r"^tend"), "tends"),
     (re.compile(r"^to some extent$"), "partial"),

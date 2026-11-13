@@ -2,6 +2,25 @@
 
 All notable changes to this skill are recorded here. Versions follow semantic versioning. The detailed change list for the helper script is in `scripts/CHANGELOG-0.4.0.md`.
 
+## [0.5.2] - 2026-11-13
+
+### Skill instructions
+- Removing watermarks or provenance marks is now named as out of scope, next to detector evasion, in `SKILL.md`, `PORTABLE.md` and the task-routing reference.
+- Proofreading is route R1 at any length; polishing and humanizing are always route R2, so a short "humanize this" request no longer has two possible routes.
+- The paraphrasing example keeps the source's hedge and quantity words exactly and changes only the sentence structure, which matches minimum rule 3.
+- Text-only replies may carry one integrity sentence per issue, in both `SKILL.md` and `PORTABLE.md`; previously the two files disagreed and a strict reading dropped a safeguard when two issues applied.
+- A visible AI-use disclosure in the user's text is kept when the skill makes its honest edit of an out-of-scope request.
+- The fast path no longer covers proofreading of evidence-heavy text, which still reads the evidence and meaning reference.
+- In `SKILL.md`, when a sentence gets clumsier after restructuring, the skill tries another structure before keeping the original.
+- `PORTABLE.md` lists an uncovered gap as a notice trigger, includes "what made it stiff" in the detector note and lists code among protected content.
+
+### Helper script
+- `compare` flags an approximator ("about", "around", "nearly", "almost") that is removed before a quantity: a number, a currency amount, a fraction ("about an eighth"), or an all-or-nothing word ("nearly all", "almost no", "almost everyone"). "About a fifth" becoming "a fifth" is now reported as a removed hedge. "About" before a topic ("talked about the results", "around the world") is not affected, but "about" before a number used as a topic ("a study about two cities") is flagged when reworded; this errs on the safe side and is recorded in the tests. On the 22,000-word thesis and paraphrase outputs from earlier testing, the number of flags did not change.
+
+### Package tools
+- The validator also compares the version fields in `.claude-plugin/marketplace.json` (when present) and the version in the `PORTABLE.md` title.
+- New tests for the validator's version check (`scripts/tests/test_validate_package.py`).
+
 ## [0.5.1] - 2026-11-13
 
 ### Changed

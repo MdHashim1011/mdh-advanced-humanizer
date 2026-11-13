@@ -32,6 +32,7 @@ SEMVER_RE = re.compile(
 MD_LINK_RE = re.compile(r"!?\[[^\]]*\]\(\s*<?([^)\s>]+)>?(?:\s+\"[^\"]*\")?\s*\)")
 REF_MENTION_RE = re.compile(r"(?<![\w/.-])references/[A-Za-z0-9_.-]+\.md\b")
 VERSION_CONST_RE = re.compile(r"^VERSION\s*=\s*[\"']([^\"']+)[\"']", re.MULTILINE)
+PORTABLE_TITLE_RE = re.compile(r"\A#[^\n]*\(v(\d+\.\d+\.\d+[0-9A-Za-z.+-]*)\)")
 CHANGELOG_ENTRY_RE = re.compile(r"^##\s+\[?v?(\d+\.\d+\.\d+[0-9A-Za-z.+-]*)\]?", re.MULTILINE)
 
 DEV_MARKERS = [
@@ -214,6 +215,24 @@ def collect_versions(root, skill_version):
             except (ValueError, AttributeError):
                 value = "<invalid JSON>"
         found[manifest + " version"] = value
+
+    marketplace = os.path.join(root, ".claude-plugin", "marketplace.json")
+    if os.path.isfile(marketplace):
+        # Version fields are optional in a marketplace entry; compare the ones that are present.
+        try:
+            data = json.loads(read_text(marketplace))
+            entries = [("metadata.version", (data.get("metadata") or {}).get("version"))]
+            entries += [("plugins[%d].version" % i, p.get("version")) for i, p in enumerate(data.get("plugins") or [])]
+        except (ValueError, AttributeError):
+            entries = [("", "<invalid JSON>")]
+        for key, value in entries:
+            if value is not None:
+                found[(".claude-plugin/marketplace.json " + key).strip()] = value
+
+    portable = os.path.join(root, "PORTABLE.md")
+    if os.path.isfile(portable):
+        m = PORTABLE_TITLE_RE.search(read_text(portable))
+        found["PORTABLE.md title"] = m.group(1) if m else None
 
     changelog = os.path.join(root, "CHANGELOG.md")
     value = None
