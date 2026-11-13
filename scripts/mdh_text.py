@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """mdh_text.py - deterministic verification helper for MdH's Advanced Humanizer.
 
-Author: Md.Hashim. License: MIT. Version 0.4.0.
+Author: Md.Hashim. License: MIT. Version 0.4.2.
 
 Commands (each prints one JSON object to stdout):
   count        count words under a named convention, with optional exclusions/sections
@@ -33,7 +33,7 @@ from collections import Counter
 from decimal import Decimal, InvalidOperation
 from fractions import Fraction
 
-VERSION = "0.4.1"
+VERSION = "0.4.2"
 TOOL = "mdh_text"
 COMMANDS = ("count", "budget", "inventory", "compare", "originality")
 DEFAULT_MAX_BYTES = 5_000_000
@@ -1200,6 +1200,7 @@ def compare_texts(original, revised, authorized=(), protect=()):
         oc = _absorb_spelling_fixes(_cues_in(ocue_by, [a["original"]]), rcue_by, a["revised"], o["text"])
         rc = _cues_in(rcue_by, a["revised"])
         _compare_cues(f, oc, rc, o["text"], rtext, a["score"])
+        _compare_cue_bindings(f, o["text"], rtext, oc, rc, a["score"])
         _compare_axes(f, o["text"], rtext, a["score"])
         _compare_labels(f, o["text"], rtext, a["score"], one_to_one=len(a["revised"]) == 1 and a["confident"])
         _compare_negation_scope(f, o["text"], rtext, a["score"])
@@ -1348,6 +1349,67 @@ def _compare_cues(f, oc, rc, otext, rtext, score):
         f.add("POTENTIAL_CHANGE", "NONSIGNIFICANCE_AS_EQUIVALENCE", "statistics",
               "A non-significant result may have been restated as equivalence or no effect.",
               otext, rtext, score, {"revised": ", ".join(rc.get("equivalence", []))})
+
+
+_BINDING_CLASSES = ("negation", "hedge", "certainty", "causal", "association")
+_CLAUSE_SPLIT = re.compile(r"[,;:.!?]+(?:\s|$)|\s(?:and|but|while|whereas|although|though|yet)\s|\s[—–-]{1,2}\s",
+                           re.IGNORECASE)
+_BINDING_STOP = _STOP | {"is", "are", "was", "were", "be", "been", "being", "it", "its", "they", "them", "their",
+                         "this", "that", "these", "those", "which", "who", "whom", "there", "here", "has", "have",
+                         "had", "do", "does", "did", "also", "than", "as", "so", "such", "into", "onto", "both",
+                         "we", "our", "he", "she", "his", "her", "not", "no", "very", "more", "less", "then"}
+_CUE_WORDS = {"may", "might", "could", "possibly", "perhaps", "probably", "likely", "unlikely", "potentially",
+              "plausibly", "linked", "associated", "related", "correlated", "causes", "cause", "caused",
+              "causing", "leads", "lead", "led", "due", "because", "therefore", "results", "result", "resulted",
+              "suggests", "suggest", "suggested", "indicates", "indicate", "indicated", "seems", "seem", "appears",
+              "appear", "clearly", "proves", "proved", "proven", "shows", "showed", "shown", "never", "cannot",
+              "without", "nor", "neither", "none"}
+
+
+def _stem(tok):
+    for suf in ("ing", "ed", "es", "s"):
+        if len(tok) > len(suf) + 3 and tok.endswith(suf):
+            return tok[: -len(suf)]
+    return tok
+
+
+def _cue_bindings(text):
+    """Map each content word to the set of claim-strength cue classes found in the same clause."""
+    sentences = split_sentences(text)
+    cues = [c for c in find_cues(text, sentences) if c["class"] in _BINDING_CLASSES]
+    bounds = [0]
+    for m in _CLAUSE_SPLIT.finditer(text):
+        bounds.append(m.end())
+    bounds.append(len(text) + 1)
+    out = {}
+    for lo, hi in zip(bounds, bounds[1:]):
+        classes = frozenset(c["class"] for c in cues if lo <= c["start"] < hi)
+        for tok in _tokens(text[lo:hi]):
+            if len(tok) < 3 or tok in _BINDING_STOP or tok in _CUE_WORDS or tok.isdigit():
+                continue
+            out.setdefault(_stem(tok), set()).update(classes)
+    return out
+
+
+def _compare_cue_bindings(f, otext, rtext, oc, rc, score):
+    """Flag a cue that kept its count but moved to a different part of the claim.
+
+    Catches swaps such as 'linked to A and causes B' -> 'causes A and linked to B', and a hedge that
+    moves to the other clause when one sentence is split. Count changes are reported elsewhere."""
+    classes = [c for c in _BINDING_CLASSES if oc.get(c) and len(oc[c]) == len(rc.get(c, []))]
+    if not classes:
+        return
+    ob, rb = _cue_bindings(otext), _cue_bindings(rtext)
+    shared = set(ob) & set(rb)
+    for cls in classes:
+        lost = sorted(w for w in shared if cls in ob[w] and cls not in rb[w])
+        gained = sorted(w for w in shared if cls not in ob[w] and cls in rb[w])
+        if lost and gained:
+            f.add("POTENTIAL_CHANGE", "CUE_MOVED", "relation",
+                  "A '%s' cue kept its count but now applies to different words; the claim it qualifies "
+                  "may have changed." % cls, otext, rtext, score,
+                  {"cue_class": cls, "no_longer_applies_to": ", ".join(lost[:6]),
+                   "now_applies_to": ", ".join(gained[:6])})
 
 
 def _axis_values(tokens):

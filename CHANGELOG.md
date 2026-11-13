@@ -2,6 +2,16 @@
 
 All notable changes to this skill are recorded here. Versions follow semantic versioning. The detailed change list for the helper script is in `scripts/CHANGELOG-0.4.0.md`.
 
+## [0.4.2] - 2026-11-13
+
+### Helper script
+- **New `CUE_MOVED` check.** Flags a negation, hedge, certainty, causal or associative cue that keeps its count but moves to a different part of the claim. Closes the two known gaps from 0.4.1: a causal and an associative claim swapped between two objects, and a hedge that moves to the other clause when a sentence is split. It also catches a negation moving between clauses. No new flags on the 22,000-word thesis or paraphrase test outputs.
+
+### Skill instructions
+- **Honest shortfall with placeholders.** When a minimum is more than about a quarter out of reach, the text also marks where each missing detail belongs, so the user can fill it in place.
+- **Template signposting** ("Firstly... Finally", 首先/其次/最后) is now covered in the main drafting rule for every language, not only in the clarity checklist.
+- `PORTABLE.md` carries both changes and now shows the correct version.
+
 ## [0.4.1] - 2026-11-09
 
 Tuning from a blind A/B comparison against 0.3.3 (16 test pairs, two independent graders).

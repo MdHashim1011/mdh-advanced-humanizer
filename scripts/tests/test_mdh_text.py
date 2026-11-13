@@ -1,4 +1,4 @@
-"""Regression and interface tests for mdh_text.py 0.4.0 (standard library only).
+"""Regression and interface tests for mdh_text.py 0.4.2 (standard library only).
 
 Run:  py -I -m unittest discover -s "<skill>/scripts/tests"   (or python3 -I -m unittest ...)
 """
@@ -265,7 +265,7 @@ MUST_FLAG = [
     ("participants swapped", "The trainers interviewed the coordinators.", "The coordinators interviewed the trainers."),
 ]
 
-KNOWN_MISSES = [
+KNOWN_MISSES = [  # missed up to 0.4.1; caught by CUE_MOVED since 0.4.2
     # Causal and associational links swapped between two objects in one sentence keep every count equal.
     ("association/cause swapped objects", "Smoking is linked to cancer and causes heart disease.",
      "Smoking causes cancer and is linked to heart disease."),
@@ -328,10 +328,25 @@ class CompareFlags(unittest.TestCase):
         for n, o, r in MUST_NOT_FLAG + [("role", "We recruited 40 participants.", "We recruited 40 people.")]:
             self.assertNotEqual(status(o, r)["status"], "DETERMINISTIC_LITERAL_FAILURE", n)
 
-    @unittest.expectedFailure
-    def test_known_limitations_still_missed(self):
+    def test_former_known_misses_now_flagged(self):
         missed = [n for n, o, r in KNOWN_MISSES if status(o, r)["status"] == "NO_FLAG_DETECTED"]
         self.assertEqual(missed, [])
+        for n, o, r in KNOWN_MISSES:
+            self.assertIn("CUE_MOVED", codes(status(o, r)), n)
+
+    def test_cue_moved_negation_between_clauses(self):
+        self.assertIn("CUE_MOVED", codes(status(
+            "Exercise did not improve mood, but it reduced stress.",
+            "Exercise improved mood but did not reduce stress.")))
+
+    def test_cue_moved_not_raised_for_faithful_rewording(self):
+        for o, r in [("The drug may reduce pain.", "Pain may be reduced by the drug."),
+                     ("Smoking is linked to cancer.", "Cancer is linked to smoking."),
+                     ("Exercise did not improve mood, but it reduced stress.",
+                      "Exercise reduced stress but did not improve mood."),
+                     ("The results suggest that sleep improved and anxiety declined.",
+                      "Sleep improved and anxiety declined, the results suggest.")]:
+            self.assertNotIn("CUE_MOVED", codes(status(o, r)), r)
 
     def test_specific_codes(self):
         self.assertIn("DIRECTION_REVERSED", codes(status("Costs increased.", "Costs decreased.")))
@@ -387,10 +402,10 @@ class Authorization(TempDirCase):
 
 class Cli(TempDirCase):
     def test_version_and_envelope(self):
-        self.assertEqual(m.VERSION, "0.4.1")
+        self.assertEqual(m.VERSION, "0.4.2")
         f = self.write("a.md", "One two three.")
         code, out = run_cli(["count", "--file", f])
-        self.assertEqual((code, out["command"], out["version"], out["count"]), (0, "count", "0.4.1", 3))
+        self.assertEqual((code, out["command"], out["version"], out["count"]), (0, "count", "0.4.2", 3))
 
     def test_file_is_required(self):
         code, out = run_cli(["budget", "--type", "max", "--target", "5"])

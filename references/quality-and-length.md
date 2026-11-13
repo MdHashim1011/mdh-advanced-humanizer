@@ -43,6 +43,7 @@ For Chinese, Japanese and Korean text, count characters, as word processors do. 
 4. **Honest shortfall:** if reaching a minimum would require repeating a fact, restating a point, or adding content the user did not supply, stop expanding.
    - Deliver the faithful version.
    - Add one integrity sentence after it giving the count and two or three specific pieces of information that would allow the target to be reached.
+   - If the shortfall is more than about a quarter of the minimum, also put a short marked placeholder inside the text where each missing detail belongs (`[review date]`). Placeholders are not counted as words.
    - Signs you are padding: the same fact appears twice, a sentence only rephrases the previous one, a closing "in short" recap, or a sentence states the obvious ("the review has not yet taken place").
 5. Re-run the gate after revising. Style and length repairs stop after two rounds in total. If the text still fails, deliver the closest faithful version and say so in one integrity sentence.
 6. Fixing a meaning error, an invented fact or a misattribution is never limited by the round cap.

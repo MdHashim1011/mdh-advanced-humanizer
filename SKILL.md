@@ -5,7 +5,7 @@ license: MIT
 compatibility: Works with or without code execution. Python 3 (standard library only) is optional and enables exact word counts, meaning-change checks and paraphrase-originality checks.
 metadata:
   author: Md.Hashim
-  version: 0.4.1
+  version: 0.4.2
 ---
 
 # MdH's Advanced Humanizer
@@ -44,7 +44,7 @@ Use what the user already said (purpose, audience, level, rubric, sources, lengt
 ## Workflow A - New writing (R3, R4, R5)
 1. For R4 and R5, read [content planning](references/content-planning.md) (`references/content-planning.md`) and build its internal plan before drafting.
 2. For R5, read [evidence and meaning](references/evidence-and-meaning.md) (`references/evidence-and-meaning.md`). It covers source modes, gaps in the supplied material and claim tracking. Cite only sources whose content you read in this session. If the user's references lack details their requested citation style needs (all authors, pages, DOI), say which in one line rather than inventing them.
-3. Draft. Open with substance, not a restatement of the prompt. Give every paragraph a distinct job and real information. End with an implication, decision or answer, not a recap.
+3. Draft. Open with substance, not a restatement of the prompt. Give every paragraph a distinct job and real information. End with an implication, decision or answer, not a recap. No template signposts ("Firstly... Finally", 首先/其次/最后) in any language.
 4. Run the final checks and word-budget gate in [quality and length](references/quality-and-length.md) (`references/quality-and-length.md`), then return the writing.
 
 **Emails, messages and replies:** lead with the decision, request or date; give only the context the reader does not already have.
@@ -59,7 +59,7 @@ Use what the user already said (purpose, audience, level, rubric, sources, lengt
 5. Run the final checks, then return the text. Convert citation styles only when asked, consistently, changing nothing else.
 
 ## Length and the honest-shortfall rule
-Aim for about 93-98% of a maximum and 102-107% of a minimum. Expand only with deeper explanation of supplied content, a supplied example, or a stated limitation. First use every honest expansion the material allows: the stated consequence of each fact, the purpose of each planned step, what each status means for the reader, and a clear structure. Only implications that follow directly from the supplied facts count. In a status update, "the forecasting module is blocked on finance's returns data" honestly supports "until finance grants access, forecasting cannot start, so its schedule depends on the date finance gives"; it does not support an invented date or cause. Short texts can often grow by half this way. **If reaching a minimum would require repeating a fact, restating a point, or adding content the user did not supply, stop.** Deliver the faithful version, then add one sentence giving its length and naming two or three specific pieces of information that would let it reach the minimum (for example: "This is about 210 words; to reach 300 I would need the load-test results, the review date and finance's response."). A shorter honest text is more useful than a padded one.
+Aim for about 93-98% of a maximum and 102-107% of a minimum. Expand first with every honest expansion the material allows: the stated consequence of each fact, the purpose of each planned step, what each status means for the reader, a supplied example, a stated limitation, a clear structure. Only implications that follow directly from supplied facts count: "the forecasting module is blocked on finance's returns data" supports "until finance grants access, forecasting cannot start", not an invented date or cause. Short texts can often grow by half this way. **If reaching a minimum would require repeating a fact, restating a point, or adding content the user did not supply, stop.** Deliver the faithful version, then one sentence giving its length and the two or three pieces of information that would let it reach the minimum ("This is about 210 words; to reach 300 I would need the load-test results, the review date and finance's response."). If it is more than a quarter short, also mark where each missing detail belongs with a placeholder (`[load-test results]`); placeholders are not counted. A shorter honest text beats a padded one.
 
 ## Optional helper (code execution only)
 `scripts/mdh_text.py` gives exact word counts (`budget`), meaning-change flags (`compare`) and close-paraphrase checks (`originality`). Read [helper](references/helper.md) (`references/helper.md`) before using it. In short:
