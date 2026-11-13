@@ -2,6 +2,11 @@
 
 All notable changes to this skill are recorded here. Versions follow semantic versioning. The detailed change list for the helper script is in `scripts/CHANGELOG-0.4.0.md`.
 
+## [0.5.1] - 2026-11-13
+
+### Changed
+- Author name is now given as Mohamed Hashim in the license, the skill metadata, the plugin manifests and the README.
+
 ## [0.5.0] - 2026-11-13
 
 First public-ready release.

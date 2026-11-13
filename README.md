@@ -127,4 +127,4 @@ The tests need no network access or API keys. The package validator checks the s
 
 ## License
 
-MIT. Copyright (c) 2026 Md.Hashim.
+MIT. Copyright (c) 2026 Mohamed Hashim.

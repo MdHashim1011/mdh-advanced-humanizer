@@ -1,4 +1,4 @@
-"""Regression and interface tests for mdh_text.py 0.5.0 (standard library only).
+"""Regression and interface tests for mdh_text.py 0.5.1 (standard library only).
 
 Run:  py -I -m unittest discover -s "<skill>/scripts/tests"   (or python3 -I -m unittest ...)
 """
@@ -402,10 +402,10 @@ class Authorization(TempDirCase):
 
 class Cli(TempDirCase):
     def test_version_and_envelope(self):
-        self.assertEqual(m.VERSION, "0.5.0")
+        self.assertEqual(m.VERSION, "0.5.1")
         f = self.write("a.md", "One two three.")
         code, out = run_cli(["count", "--file", f])
-        self.assertEqual((code, out["command"], out["version"], out["count"]), (0, "count", "0.5.0", 3))
+        self.assertEqual((code, out["command"], out["version"], out["count"]), (0, "count", "0.5.1", 3))
 
     def test_file_is_required(self):
         code, out = run_cli(["budget", "--type", "max", "--target", "5"])

@@ -11,7 +11,7 @@ Usage:
 SKILL_ROOT defaults to the parent folder of this script's folder.
 Exit codes: 0 all checks passed, 1 one or more checks failed, 2 usage error.
 
-Copyright (c) 2026 Md.Hashim. MIT License.
+Copyright (c) 2026 Mohamed Hashim. MIT License.
 """
 import json
 import os
