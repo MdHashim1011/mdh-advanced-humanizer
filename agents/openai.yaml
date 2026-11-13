@@ -1,0 +1,4 @@
+interface:
+  display_name: "MdH's Advanced Humanizer"
+  short_description: "Revise and write prose that reads naturally while keeping facts, citations and meaning intact"
+  default_prompt: "Revise this text so it reads naturally and specifically. Keep every fact, number, citation and hedge unchanged, and stay within the word limit."

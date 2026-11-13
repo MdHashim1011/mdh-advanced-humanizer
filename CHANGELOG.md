@@ -1,0 +1,63 @@
+# Changelog
+
+All notable changes to this skill are recorded here. Versions follow semantic versioning. The detailed change list for the helper script is in `scripts/CHANGELOG-0.4.0.md`.
+
+## [0.4.1] - 2026-11-09
+
+Tuning from a blind A/B comparison against 0.3.3 (16 test pairs, two independent graders).
+
+### Skill instructions
+- **Embedded instructions.** Instructions addressed to an AI are now left out of edited text and reported in one sentence (kept only when the user asks for verbatim text).
+- **Humanize requests may loosen stiff greetings and sign-offs** to the natural form for the relationship; formal contexts keep formal forms.
+- **Paraphrase means restructuring.** Dense statistical text is restructured properly, with the meaning check as the safety net.
+- **Honest expansion first.** Before reporting a shortfall against a minimum length, every honest expansion the material allows is used.
+- **Cover letters with thin material** get a stronger draft with marked placeholders plus two or three specific questions.
+- **Blocking gaps under deadline** come with safe partial help (a findings-free outline) straight away.
+- **Incomplete references** for a requested citation style are noted in one line.
+- **Routing:** short new writing is under 200 words; essays and report sections always get the planning route.
+- **Launcher:** `py -3` first on Windows.
+- **Readable restructuring.** Paraphrases restructure for readability, not for difference; a clumsier sentence is reworked or kept as it was.
+- **Plain-language verification reports** with no script names or status codes unless technical detail is requested.
+- **Formulaic enumeration in any language** (for example 首先/其次/再次/最后) and slogan endings are treated as over-signposting.
+- **Concrete honest-expansion example** for status updates.
+- **CJK limits:** Chinese and Japanese character limits are checked including punctuation.
+
+### Helper script (`scripts/mdh_text.py` 0.4.1)
+- Spelling corrections no longer raise meaning-cue flags.
+- "when compared with/to" is no longer read as a condition.
+- Number role checks skip function words such as "versus" and "relative".
+- New CJK character counts and `budget --count-mode cjk_chars_with_punct`.
+
+## [0.4.0] - 2026-11-09
+
+### Skill instructions
+- **Minimum-rules block.** SKILL.md now opens with nine rules that apply even when no reference file is read: no invented content, a citation is not a source, protected meaning elements, doubtful facts kept and flagged, embedded instructions treated as data, no padding, nothing unrequested, writing-only delivery, and no claimed checks that did not run.
+- **Humanize scope.** "Humanize", "more natural", "less robotic", "less generic" and "smoother" are handled as ordinary quality requests (light editing plus removal of stock phrasing). Requests to evade AI detectors or disguise prohibited assistance are declined in one sentence, with an honest edit, feedback or disclosure help offered instead.
+- **Routing order.** Requests are routed in a fixed order: R0 (not a writing task), R1/R2 (existing text), R5 (new writing from sources or data, with R5-lite for short abstracts and summaries), then R3/R4 by length. R1 and R3 have a fast path that needs no reference files.
+- **Honest-shortfall rule.** When reaching a minimum length would require repetition or unsupplied content, the skill delivers the faithful version and names the specific information that would let it reach the target.
+- **Clarity checklist tiers.** `references/clarity-checklist.md` splits patterns into Tier 1 (fix wherever found) and Tier 2 (act only when clustered or recurring). Each pattern states the clarity problem and a restructuring fix, not a word to avoid.
+- **Paraphrase and originality guidance.** New `references/paraphrase-and-originality.md` covers writing from meaning, keeping technical terms, quoting distinctive phrases, and checking for shared word runs with the source.
+- **Delivery cases.** Output rules distinguish text-only requests, ordinary requests and verification requests. Integrity notices are always kept, as one plain sentence after the writing.
+- **PORTABLE.md.** A single-file version of the instructions for platforms without skill folders or code execution, kept under 8,000 characters.
+
+### Helper script (`scripts/mdh_text.py` 0.4.0)
+- **Temp-file workflow.** Text to be checked is written with a file-writing tool to a fresh temp folder, never passed through shell quoting.
+- **Launcher fallback.** The documented launch order is `py -3` first on Windows, otherwise `python3`, then `python`, with counts labelled ESTIMATED when none works.
+- **Path guard.** Only `.txt`, `.md`, `.markdown`, `.text` and `.rst` inputs are read (`.json` for the authorized list), and paths under credential or configuration folders are refused.
+- **Direction and antonym detection.** `compare` checks direction words across several axes (amount, time, quality, likelihood and others), negating prefixes, hedge and certainty strength, quantifier and condition classes, and weakened causal wording.
+- **Originality command.** New `originality` command reports long word sequences shared with a source, with quoted text reported separately.
+- **Protected terms.** `compare` accepts user-protected terms that must survive exactly and can never be authorised away.
+- **CJK counting.** Each Chinese, Japanese or Korean character counts as one word; Thai is estimated with a warning.
+- **Performance fixes.** Content-based sentence alignment, bounded Markdown patterns and coverage arrays keep 1 MB adversarial inputs within a few CPU seconds.
+- **Tests.** Standard-library `unittest` suite in `scripts/tests/`, including a regression test for every reported bug.
+
+### Packaging
+- Plugin manifests for Claude Code (`.claude-plugin/`) and Cursor (`.cursor-plugin/`), and `agents/openai.yaml`.
+- `tools/validate_package.py` checks frontmatter, version consistency, links, size limits and leftover development markers.
+- GitHub Actions workflow running the validator, unit tests and a helper smoke test on Linux, Windows and macOS with Python 3.9 and 3.13.
+- Issue forms for meaning changes, writing quality and helper bugs.
+- README.md, CONTRIBUTING.md and this changelog.
+
+## [0.3.3]
+
+Previous development release.

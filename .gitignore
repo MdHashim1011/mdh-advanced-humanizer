@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Skill evaluation and scratch workspaces
+workspace/
+*-workspace/
+workspace-*/
+.tmp/
+tmp/
+
+# Build output
+dist/
+*.zip
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.idea/
+.vscode/

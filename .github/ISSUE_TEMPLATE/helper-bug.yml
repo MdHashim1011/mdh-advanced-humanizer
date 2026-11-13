@@ -1,0 +1,47 @@
+name: Helper script bug
+description: scripts/mdh_text.py crashed, miscounted or gave a wrong finding.
+title: "[helper] "
+labels: ["helper-bug"]
+body:
+  - type: input
+    id: command
+    attributes:
+      label: Command
+      description: The full command line, for example "python3 scripts/mdh_text.py count --file sample.md".
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Input file contents
+      description: The smallest input that shows the problem. Attach the file if encoding or byte order matters.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: JSON output and exit code
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Helper version
+      description: Output of "python3 scripts/mdh_text.py --version".
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Operating system and Python version
+      description: For example "Windows 11, Python 3.12 via py -3".
+    validations:
+      required: true

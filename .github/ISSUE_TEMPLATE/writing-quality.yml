@@ -1,0 +1,51 @@
+name: Writing quality
+description: The meaning was kept, but the writing itself was weak.
+title: "[quality] "
+labels: ["writing-quality"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for problems with style, length or structure. If a fact or claim changed, use the "Meaning changed" form instead.
+  - type: dropdown
+    id: problem
+    attributes:
+      label: Problem
+      options:
+        - A clarity pattern survived the edit
+        - Over-edited (more change than the request called for)
+        - The writer's voice was lost
+        - Padding or repetition to reach a length
+        - Unrequested heading, title or summary added
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Input text
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output text
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: Name the sentence or pattern and describe the result you wanted.
+    validations:
+      required: true
+  - type: input
+    id: request
+    attributes:
+      label: Request you gave
+  - type: input
+    id: platform
+    attributes:
+      label: Platform and skill version

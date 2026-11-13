@@ -1,0 +1,55 @@
+name: Meaning changed
+description: A revision changed what the original text said.
+title: "[meaning] "
+labels: ["meaning-changed"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form when a revision added, dropped or altered a claim. Remove any personal or confidential details before pasting text.
+  - type: textarea
+    id: original
+    attributes:
+      label: Original text
+      description: The text exactly as it was given to the skill.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: revised
+    attributes:
+      label: Revised text
+      description: The text exactly as the skill returned it.
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: change-type
+    attributes:
+      label: What changed
+      options:
+        - Fact added
+        - Fact dropped
+        - Negation or hedge changed
+        - Number or unit changed
+        - Citation moved
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Point to the sentence or phrase that changed and say what it should have kept.
+    validations:
+      required: true
+  - type: input
+    id: request
+    attributes:
+      label: Request you gave
+      description: For example "humanize this paragraph" or "shorten to 200 words".
+  - type: input
+    id: platform
+    attributes:
+      label: Platform and skill version
+      description: For example "Claude Code, 0.4.0" or "custom GPT using PORTABLE.md".

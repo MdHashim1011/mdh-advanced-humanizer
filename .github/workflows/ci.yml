@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.9", "3.13"]
+    defaults:
+      run:
+        shell: bash
+    env:
+      PYTHONIOENCODING: utf-8
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Validate package
+        run: python -I tools/validate_package.py "$GITHUB_WORKSPACE"
+
+      - name: Run helper unit tests
+        run: python -I -B -m unittest discover -s scripts/tests -v
+
+      - name: Smoke run of the helper count command
+        run: |
+          python -I -B scripts/mdh_text.py --version
+          python -I -B scripts/mdh_text.py count --file tools/fixtures/smoke.md --exclude references,headings > count.json
+          cat count.json
+          python -I -c "import json,sys; d=json.load(open('count.json',encoding='utf-8')); sys.exit(0 if d.get('version') and d.get('command')=='count' else 1)"
