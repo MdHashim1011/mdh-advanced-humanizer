@@ -68,6 +68,21 @@ It works in the language of your text and never translates unasked. Chinese and 
 
 ## Blind test results
 
+### Held-out tasks (version 0.5.5)
+
+Ten writing tasks were written for this test and never used while developing the skill, one for each kind of request the skill handles. The same model (Claude Sonnet) answered each task with and without the skill. Two independent graders (Claude Opus) scored each pair out of 40 on fidelity, naturalness, instruction fit and usefulness without knowing which reply came from the skill.
+
+| | With the skill | Without | Skill wins | Losses | Ties |
+|---|---|---|---|---|---|
+| Grader 1 | 359 | 335 | 6 | 2 | 2 |
+| Grader 2 | 355 | 328 | 6 | 2 | 2 |
+
+The difference comes mostly from fidelity: out of 100 for each side, the skill scored 96 and 95 against 79 for the plain model, which changed exact hours into "roughly", strengthened "may" to "probably", rounded "0.8 days" to "about 0.8 days" and added content to a French notice. On a request to get past an AI checker, the skill made an honest light edit with one plain sentence, while the plain model refused at length and rewrote the claims. Naturalness was level (83 against 83, and 84 against 83). The skill lost two tasks by one and two points: a shortening task where the plain reply read slightly tighter, and a literature review requested from citations alone, where both declined to invent findings and the graders found the plain outline a little more usable.
+
+An earlier held-out test of version 0.5.3 was close to even (344 against 335, and 334 against 332). The changes since then target the weaknesses it found: a change list after proofreading, honest expansion to a minimum length, and paraphrases that keep the source's terms without copying its wording.
+
+### Earlier test on development tasks (version 0.4.5)
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/blind-test-results-dark.svg">
   <img alt="Bar chart of blind grading scores out of 40, averaged over two graders, with the skill against the same model without it. Chinese essay 35.5 vs 23.5; less robotic email 39.5 vs 32.5; paraphrase a published source 36 vs 30; proofread with a hidden instruction 37 vs 34.5; paraphrase dense statistics 36 vs 34.5; shorten to under 60 words 33 vs 31; make it undetectable request 34 vs 35; expand to at least 300 words 26 vs 29. Totals 277 vs 252 and 277 vs 248." src="assets/blind-test-results-light.svg" width="100%">
@@ -77,7 +92,7 @@ The same model (Claude Sonnet) answered eight writing tasks with and without the
 
 The largest gaps were the Chinese essay, where the plain model ran to over 400 characters against a 300-character limit, and paraphrasing a published source, where the plain model dropped the source's hedges ("may have accumulated" became "took"). The skill lost two tasks narrowly. In one it stopped 7 words short of a 300-word minimum; that rule has since been changed so it makes one more honest pass before reporting a shortfall. In the other, a request to get past AI detectors, the graders preferred the plain model's longer explanation.
 
-Some limits on what these numbers show: there was one run per task on each side, the graders were AI models rather than people, and four of the tasks were also used while developing the skill. Treat the results as evidence of a real difference on these kinds of tasks, not as a general ranking.
+Some limits on what these numbers show: there was one run per task on each side, the graders were AI models from the same family as the writer rather than people, and four of the eight earlier tasks were also used while developing the skill. Treat the results as evidence of a real difference on these kinds of tasks, not as a general ranking.
 
 ## The helper script
 
@@ -112,7 +127,7 @@ The skill is a set of instructions and sends nothing anywhere. The helper script
 
 ## Roadmap
 
-Planned next: a larger blind evaluation with tasks never used during development and human graders, a voice-matching mode that learns from a sample of your writing, and citation-style conversion checks.
+Planned next: a larger blind evaluation with several runs per task and human graders, a voice-matching mode that learns from a sample of your writing, and citation-style conversion checks.
 
 ## Development
 

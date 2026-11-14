@@ -9,6 +9,9 @@ All notable changes to this skill are recorded here. Versions follow semantic ve
 - A paraphrase keeps the field's terms exactly instead of replacing them with a description ("bed occupancy", not "how full the wards were"), and the originality reference asks for every technical term to be checked against the source.
 - Shorter wording in a few `SKILL.md` and `PORTABLE.md` lines, with no change of rule, to stay within the size limits.
 
+### Documentation
+- The README reports a held-out blind test of this version: ten tasks never used in development, two blind graders, 359 against 335 and 355 against 328 points, six wins, two losses and two ties against the same model without the skill.
+
 ## [0.5.4] - 2026-11-14
 
 ### Skill instructions
