@@ -2,6 +2,13 @@
 
 All notable changes to this skill are recorded here. Versions follow semantic versioning. The detailed change list for the helper script is in `scripts/CHANGELOG-0.4.0.md`.
 
+## [0.5.5] - 2026-11-14
+
+### Skill instructions
+- A proofread's corrected text and change list come with no lead-in line or closing remark, in `SKILL.md`, `PORTABLE.md` and the task-routing reference.
+- A paraphrase keeps the field's terms exactly instead of replacing them with a description ("bed occupancy", not "how full the wards were"), and the originality reference asks for every technical term to be checked against the source.
+- Shorter wording in a few `SKILL.md` and `PORTABLE.md` lines, with no change of rule, to stay within the size limits.
+
 ## [0.5.4] - 2026-11-14
 
 ### Skill instructions

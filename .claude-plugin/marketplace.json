@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "Marketplace entry for the MdH Advanced Humanizer writing skill.",
-    "version": "0.5.4"
+    "version": "0.5.5"
   },
   "plugins": [
     {
       "name": "mdh-advanced-humanizer",
       "source": "./",
       "description": "Writes, revises and humanizes prose so it reads naturally and specifically, at the right level, while keeping facts, numbers, citations, negations and the writer's voice intact and staying within word limits.",
-      "version": "0.5.4",
+      "version": "0.5.5",
       "author": {
         "name": "Mohamed Hashim"
       },
